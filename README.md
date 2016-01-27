@@ -1,4 +1,4 @@
-# Blocss: tools.mixins – v1.0.0
+# Blocss: tools.mixins – v1.0.1
 
 A set of usefull Sass mixins, wich can be used troughout your project
 
