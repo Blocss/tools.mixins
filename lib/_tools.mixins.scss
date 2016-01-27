@@ -21,7 +21,11 @@ $legacy-support-for-ie8: false !default;
  * Value to rem
  */
 @function valueToRem($value) {
-    @return ($value/$blocss-browser-context*1rem);
+    @if type-of($value) == string or unitless($value) == true or unit($value) == "em" or unit($value) == "%" {
+        @return $value;
+    } @else {
+        @return ($value/$blocss-browser-context*1rem);
+    }
 }
 
 
@@ -64,11 +68,7 @@ $legacy-support-for-ie8: false !default;
     @if type-of($value) == list {
         $all: ();
         @for $i from 1 through length($value) {
-            @if type-of(nth($value, $i)) == string or unitless(nth($value, $i)) == true or unit(nth($value, $i)) == "em" or unit(nth($value, $i)) == "%" {
-                $all: append($all, nth($value, $i));
-            } @else {
-                $all: append($all, valueToRem(nth($value, $i)));
-            }
+            $all: append($all, valueToRem(nth($value, $i)));
         }
         #{$property}: $all #{$append};
     } @else {
