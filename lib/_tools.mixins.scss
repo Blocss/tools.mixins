@@ -124,15 +124,19 @@ $legacy-support-for-ie8: false !default;
     $breakpoint-found: false;
 
     @each $breakpoint in $blocss-breakpoints {
-        $name: nth($breakpoint, 1);
-        $declaration: nth($breakpoint, 2);
+        @if type-of($breakpoint) == 'list' {
+            $name: nth($breakpoint, 1);
+            $declaration: nth($breakpoint, 2);
 
-        @if $media-query == $name and $declaration {
-            $breakpoint-found: true;
+            @if $media-query == $name and $declaration {
+                $breakpoint-found: true;
 
-            @media only screen and #{$declaration} {
-                @content;
+                @media only screen and #{$declaration} {
+                    @content;
+                }
             }
+        } @else {
+            @error "Breakpoint doesn’t match the `'key': '(value)'` format";
         }
     }
 
