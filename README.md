@@ -1,4 +1,6 @@
-# Blocss: tools.mixins – v1.0.2
+# Blocss: tools.mixins – v1.0.2 - Deprecated
+
+**This module has been moved to: ([https://github.com/Blocss/blocss](https://github.com/Blocss/blocss))**
 
 A set of usefull Sass mixins, wich can be used troughout your project
 
